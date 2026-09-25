@@ -1,0 +1,79 @@
+{
+  "status": "CONCEPT / SIMULATION ONLY \u2014 NOT A BUILT OR TESTED WEARABLE",
+  "current_validated_path": [
+    "Clinical PSG EDF",
+    "FINAL_CLASSIFIER_RC1",
+    "five-stage hypnogram",
+    "sqi-1.0.0"
+  ],
+  "future_path": [
+    "Fpz-to-mastoid EEG + horizontal EOG",
+    "ADS1299-4 at 250 SPS",
+    "anti-alias/filter and rational resampling to 64 Hz",
+    "nRF52840 BLE streaming",
+    "phone-side future reduced-input classifier",
+    "hypnogram",
+    "sqi-1.0.0"
+  ],
+  "rc1_compatibility": false,
+  "rc1_reason": "RC1 requires exact Fpz-Cz, Pz-Oz, horizontal EOG, and submental EMG; proposed wearable changes EEG derivation and omits Pz-Oz/EMG.",
+  "sensors": [
+    {
+      "signal": "EEG",
+      "placement": "Fpz to mastoid reference",
+      "status": "concept; differs from measured Fpz-Cz"
+    },
+    {
+      "signal": "horizontal EOG",
+      "placement": "outer canthi",
+      "status": "concept"
+    },
+    {
+      "signal": "bias/driven ground",
+      "placement": "opposite mastoid",
+      "status": "concept"
+    }
+  ],
+  "afe": "ADS1299-4",
+  "acquisition_sps": 250,
+  "classifier_hz": 64,
+  "anti_alias": "Required. Retained software test used 8th-order Butterworth 28 Hz and showed 80.6 dB attenuation at 50 Hz; physical implementation unresolved. 250\u219264 is rational resampling, not integer decimation.",
+  "mcu": "nRF52840",
+  "ble": "stream two 24-bit channels at 64 Hz; 384 B/s payload",
+  "battery": {
+    "part": "LP502535",
+    "capacity_mAh": 400,
+    "average_current_mA": 7.56,
+    "nominal_hours": 53,
+    "status": "calculated, not measured"
+  },
+  "inference_location": "phone",
+  "reduced_model": {
+    "id": "R1 64 Hz research prototype",
+    "inputs": "Fpz-Cz + horizontal EOG clinical PSG signals",
+    "features": 203,
+    "oof_macro_f1": 0.7543,
+    "file_bytes": 10210487,
+    "status": "RESEARCH_PROTOTYPE; not frozen/integrated; not trained on proposed Fpz-mastoid wearable data"
+  },
+  "bom_total": "UNVERIFIED \u2014 no priced BOM retained",
+  "physical_validation": {
+    "prototype_built": false,
+    "human_wearable_recordings": 0,
+    "battery_measured": false,
+    "ble_measured": false,
+    "on_device_inference": false
+  },
+  "safety": [
+    "no electrical safety certification",
+    "no EMC testing",
+    "no biocompatibility testing",
+    "no clinical validation",
+    "no regulatory review"
+  ],
+  "artifacts": {
+    "integration/sleep-dashboard-handoff/HARDWARE_CONCEPT.md": "c11756442fef29daab15fbe261a53dde0445badd478b1b2ffa626c0813b7cbf0",
+    "integration/sleep-dashboard-handoff/HARDWARE_SPEC.md": "91efb065de04dd960a172c6c417e23a64af362ccc537683fb7a3e809f6401e08",
+    "integration/sleep-dashboard-handoff/data/hardware_report.json": "b32bb951c0ac4aa4bf10f92db82568be92eb7878e19f1f996b8210f696fbe893"
+  }
+}

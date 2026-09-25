@@ -1,0 +1,80 @@
+{
+  "contract_version": "FINAL_CLASSIFIER_RC1-output-v1",
+  "columns": [
+    {
+      "name": "recording_id",
+      "type": "string"
+    },
+    {
+      "name": "epoch_index",
+      "type": "integer",
+      "invariant": "unique, zero-based, increasing within recording"
+    },
+    {
+      "name": "onset",
+      "type": "number",
+      "unit": "seconds",
+      "invariant": "finite and strictly increasing"
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "unit": "seconds",
+      "invariant": "30"
+    },
+    {
+      "name": "predicted_stage",
+      "type": "string",
+      "allowed": [
+        "Wake",
+        "N1",
+        "N2",
+        "N3",
+        "REM"
+      ],
+      "invariant": "argmax of ordered probabilities"
+    },
+    {
+      "name": "quality_flags",
+      "type": "string"
+    },
+    {
+      "name": "model_version",
+      "type": "string",
+      "invariant": "FINAL_CLASSIFIER_RC1"
+    },
+    {
+      "name": "P(Wake)",
+      "type": "number",
+      "invariant": "finite, nonnegative; five probabilities sum to 1 within validated floating-point tolerance"
+    },
+    {
+      "name": "P(N1)",
+      "type": "number",
+      "invariant": "finite, nonnegative; five probabilities sum to 1 within validated floating-point tolerance"
+    },
+    {
+      "name": "P(N2)",
+      "type": "number",
+      "invariant": "finite, nonnegative; five probabilities sum to 1 within validated floating-point tolerance"
+    },
+    {
+      "name": "P(N3)",
+      "type": "number",
+      "invariant": "finite, nonnegative; five probabilities sum to 1 within validated floating-point tolerance"
+    },
+    {
+      "name": "P(REM)",
+      "type": "number",
+      "invariant": "finite, nonnegative; five probabilities sum to 1 within validated floating-point tolerance"
+    }
+  ],
+  "probability_order": [
+    "Wake",
+    "N1",
+    "N2",
+    "N3",
+    "REM"
+  ],
+  "row_count": "floor(EDF duration seconds / 30) for supported complete epochs"
+}

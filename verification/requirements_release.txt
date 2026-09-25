@@ -1,0 +1,12 @@
+# Versions from the validated Windows/CUDA release environment.
+# Install the CUDA 12.6 PyTorch build using the matching official PyTorch index.
+numpy==2.5.3
+pandas==3.0.1
+scipy==1.18.1
+scikit-learn==1.9.1
+lightgbm==4.7.0
+joblib==1.6.0
+pyEDFlib==0.1.42
+psutil
+torch==2.6.0+cu126
+# Retained environment also contained MNE 1.13.2; RC1 inference does not import it.

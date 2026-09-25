@@ -1,0 +1,20 @@
+{
+  "name": "FINAL_CLASSIFIER_RC1",
+  "version": "FINAL_CLASSIFIER_RC1",
+  "bundle_path": "../../artifacts/FINAL_CLASSIFIER_RC1/freeze.json",
+  "predict_command": "python ../../predict_final.py --input {edf} --output {csv}",
+  "sha256": "c6e1f71f310999be5a629c37884544cfb2f643f8fa1e09231544a5baa213a010",
+  "csv_columns": {
+    "epoch_index": "epoch_index",
+    "onset": "onset",
+    "stage": "predicted_stage",
+    "p_wake": "P(Wake)",
+    "p_n1": "P(N1)",
+    "p_n2": "P(N2)",
+    "p_n3": "P(N3)",
+    "p_rem": "P(REM)",
+    "quality_flags": "quality_flags",
+    "model_version": "model_version",
+    "duration": "duration"
+  }
+}

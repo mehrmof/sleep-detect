@@ -1,0 +1,41 @@
+{
+  "scientific_release": "FINAL_CLASSIFIER_RC1",
+  "scientific_freeze_sha256": "c6e1f71f310999be5a629c37884544cfb2f643f8fa1e09231544a5baa213a010",
+  "portable_patch_type": "PATH_RESOLUTION_ONLY",
+  "original_predict_final_sha256": "2ba652f2c7d02e547603b3e4378c8578af96871eb11d1076f2971491739746cd",
+  "portable_predict_final_sha256": "2ba652f2c7d02e547603b3e4378c8578af96871eb11d1076f2971491739746cd",
+  "portable_config_sha256": "57cedef96b03f3e1340762ae0de15da96ebe238bf7b286efe2e953f784afe44c",
+  "model_weight_hashes": {
+    "artifacts/N06/model.joblib": "66af8808a9fca42c6046e83a09e02bdcd10d912cc5d013ae02ba52837c7fa262",
+    "artifacts/CNN_C01/fold_1/best.pt": "da828fefa7bb452ac5c2a31c49bdadf8ea6f209a6c9f3a84253f589afc56a28b",
+    "artifacts/CNN_C01/fold_2/best.pt": "e894001d17d2015b5a048bd04421b0fd07e17394be98db43170a747eeb87618c",
+    "artifacts/CNN_C01/fold_3/best.pt": "932aac9d7ee8bdb70d1652b12e84fddc240d337fc426593c9b5bc9c68d238a74",
+    "artifacts/CNN_C01/fold_4/best.pt": "d7a1ffcb3c29eacb752425077ba628ae415a46a0b5d3e3ee411d5cce55843024",
+    "artifacts/CNN_C01/fold_5/best.pt": "43cc48f8720fce07b572ad395e7f7e6d966904c6daf93e32f1d69181a41ab601"
+  },
+  "weight_hashes_unchanged": true,
+  "prediction_equivalence_test": {
+    "recording": "T02_telemetry_10s_records",
+    "source": "unlabeled rehearsal EDF",
+    "same_epoch_keys": true,
+    "stage_differences": 0,
+    "max_probability_difference": 0.0
+  },
+  "absolute_runtime_paths_remaining": 0,
+  "outside_root_import_and_artifact_load": "PASS",
+  "single_edf_staged_inference": "PASS",
+  "directory_mode_inference": "PASS",
+  "sqi_outside_root": "PASS",
+  "sqi_value": 34.23283614244784,
+  "sqi_reference_value": 34.23283614244784,
+  "validated_environment": {
+    "os": "Windows",
+    "python": "3.12.14",
+    "torch": "2.6.0+cu126",
+    "cuda": "12.6",
+    "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "cpu_status": "not validated"
+  },
+  "date": "2026-09-25",
+  "gate": "READY_WITH_LIMITATIONS"
+}

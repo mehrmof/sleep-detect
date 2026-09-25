@@ -1,0 +1,44 @@
+{
+  "contract_version": "FINAL_CLASSIFIER_RC1-input-v1",
+  "format": "EDF",
+  "labels_required": false,
+  "hypnogram_required": false,
+  "process": "complete supplied EDF as-is",
+  "required_channels": [
+    {
+      "name": "EEG Fpz-Cz",
+      "sample_rate_hz": 100,
+      "unit": "uV",
+      "exact_name": true
+    },
+    {
+      "name": "EEG Pz-Oz",
+      "sample_rate_hz": 100,
+      "unit": "uV",
+      "exact_name": true
+    },
+    {
+      "name": "EOG horizontal",
+      "sample_rate_hz": 100,
+      "unit": "uV",
+      "exact_name": true
+    },
+    {
+      "name": "EMG submental",
+      "accepted_modes": [
+        {
+          "sample_rate_hz": 100,
+          "handling": "10 Hz high-pass then 1-second RMS envelope"
+        },
+        {
+          "sample_rate_hz": 1,
+          "handling": "use as envelope"
+        }
+      ],
+      "exact_name": true
+    }
+  ],
+  "epoch_duration_seconds": 30,
+  "partial_final_epoch": "omitted",
+  "unsupported": "reject; no alias substitution or fabricated channel"
+}

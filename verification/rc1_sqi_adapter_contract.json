@@ -1,0 +1,36 @@
+{
+  "adapter_version": "rc1-to-sqi-schema-1",
+  "source_schema": "FINAL_CLASSIFIER_RC1-output-v1",
+  "target_schema": "sqi-1.0.0 CSV CLI input",
+  "field_mappings": {
+    "recording_id": "recording_id",
+    "epoch_index": "epoch_idx",
+    "onset": "onset_sec",
+    "predicted_stage": "pred",
+    "P(Wake)": "prob_W",
+    "P(N1)": "prob_N1",
+    "P(N2)": "prob_N2",
+    "P(N3)": "prob_N3",
+    "P(REM)": "prob_REM"
+  },
+  "unit_mappings": {
+    "onset": "seconds to seconds; no conversion"
+  },
+  "stage_mapping": {
+    "Wake": "Wake",
+    "N1": "N1",
+    "N2": "N2",
+    "N3": "N3",
+    "REM": "REM"
+  },
+  "scientific_transformations": "NONE",
+  "row_filtering": "NONE",
+  "value_modification": "NONE",
+  "preserves": [
+    "row order",
+    "row count",
+    "onset numeric and lexical values",
+    "stage values",
+    "probability values"
+  ]
+}

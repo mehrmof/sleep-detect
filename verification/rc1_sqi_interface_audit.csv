@@ -1,0 +1,13 @@
+semantic_field,rc1_field,rc1_type,sqi_field,sqi_type,compatible,adapter_action
+recording identifier,recording_id,string,recording_id,string,yes,copy unchanged
+epoch index,epoch_index,integer,epoch_idx,string/integer accepted,no,rename and preserve lexical value
+epoch onset,onset,number seconds,onset_sec,number seconds,no,rename only; preserve numeric and lexical value
+hard stage,predicted_stage,Wake/N1/N2/N3/REM,pred,stage name or numeric code accepted,no,rename only; identity stage mapping
+Wake probability,P(Wake),number,prob_W,number,no,rename only
+N1 probability,P(N1),number,prob_N1,number,no,rename only
+N2 probability,P(N2),number,prob_N2,number,no,rename only
+N3 probability,P(N3),number,prob_N3,number,no,rename only
+REM probability,P(REM),number,prob_REM,number,no,rename only
+epoch duration,duration,number seconds,not consumed by CSV CLI,NA,not_applicable,omit from adapter output; SQI infers 30 s from onset spacing
+quality flags,quality_flags,string,not consumed by CSV CLI,NA,not_applicable,omit from adapter output
+model version,model_version,string,not consumed by CSV CLI,NA,not_applicable,omit from adapter output

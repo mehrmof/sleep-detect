@@ -1,0 +1,308 @@
+{
+  "version": "sqi-1.0.0",
+  "name": "interpretable objective hypnogram-derived Sleep Quality Index",
+  "not_claimed": [
+    "PSQI",
+    "subjective questionnaire",
+    "clinically validated score",
+    "diagnostic score",
+    "universal definition of good sleep"
+  ],
+  "formula": "100*(0.25*efficiency + 0.20*continuity + 0.20*duration + 0.15*fragmentation + 0.10*latency + 0.10*architecture)",
+  "weights": {
+    "efficiency": 0.25,
+    "continuity": 0.2,
+    "duration": 0.2,
+    "fragmentation": 0.15,
+    "latency": 0.1,
+    "architecture": 0.1
+  },
+  "architecture": "mean(c_n3_percent,c_rem_percent,c_rem_latency)",
+  "component_maps": {
+    "duration": [
+      [
+        0,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        0.7
+      ],
+      [
+        24,
+        0.7
+      ]
+    ],
+    "efficiency": [
+      [
+        0,
+        0
+      ],
+      [
+        0.65,
+        0
+      ],
+      [
+        0.85,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "latency": [
+      [
+        0,
+        1
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        60,
+        0
+      ],
+      [
+        1000000.0,
+        0
+      ]
+    ],
+    "continuity": [
+      [
+        0,
+        1
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        60,
+        0
+      ],
+      [
+        1000000.0,
+        0
+      ]
+    ],
+    "fragmentation": [
+      [
+        0,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        30,
+        0
+      ],
+      [
+        1000000.0,
+        0
+      ]
+    ],
+    "n3_percent": [
+      [
+        0,
+        0
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        23,
+        1
+      ],
+      [
+        40,
+        0.5
+      ],
+      [
+        100,
+        0.5
+      ]
+    ],
+    "rem_percent": [
+      [
+        0,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        25,
+        1
+      ],
+      [
+        40,
+        0.5
+      ],
+      [
+        100,
+        0.5
+      ]
+    ],
+    "rem_latency": [
+      [
+        0,
+        0
+      ],
+      [
+        60,
+        1
+      ],
+      [
+        120,
+        1
+      ],
+      [
+        240,
+        0
+      ],
+      [
+        1000000.0,
+        0
+      ]
+    ]
+  },
+  "input_contract": {
+    "stage_priority": [
+      "pred",
+      "label",
+      "stage"
+    ],
+    "accepted_names": [
+      "W",
+      "WAKE",
+      "N1",
+      "N2",
+      "N3",
+      "REM",
+      "R"
+    ],
+    "probability_columns": [
+      "prob_W",
+      "prob_N1",
+      "prob_N2",
+      "prob_N3",
+      "prob_REM"
+    ],
+    "probability_tolerance": 1e-06,
+    "onsets": "finite and strictly increasing; no sorting/deduplication",
+    "epoch_duration": "explicit epoch_sec else median positive onset step else 30 s",
+    "hard_stage_first": true
+  },
+  "temporal": {
+    "tib": "supplied recording/window span proxy",
+    "onset": "first sleep epoch with next 600 s containing >=50% sleep and >=round(600/epoch_sec) epochs",
+    "final_awakening": "last sleep epoch with preceding 600 s containing >=50% sleep and minimum count",
+    "spt": "onset through end of final qualifying sleep epoch",
+    "tst": "N1+N2+N3+REM minutes inside SPT",
+    "waso": "Wake minutes inside SPT",
+    "sol": "window start to qualifying onset",
+    "stage_percent_denominator": "TST",
+    "rem_latency": "sleep onset to first REM inside SPT",
+    "sfi": "clock-adjacent differing scored-stage pairs per SPT hour",
+    "wake_bouts": "clock-adjacent Wake runs per SPT hour"
+  },
+  "refusal_rules": [
+    {
+      "condition": "window<180 min or end<=start",
+      "reason": "window_too_short"
+    },
+    {
+      "condition": "unscored_fraction>0.25",
+      "reason": "unknown_fraction"
+    },
+    {
+      "condition": "no qualifying onset/final awakening",
+      "reason": "no_sleep"
+    },
+    {
+      "condition": "SPT<60 min or scored coverage<0.70",
+      "reason": "spt_coverage_low"
+    },
+    {
+      "condition": "TST<=0",
+      "reason": "no_sleep"
+    }
+  ],
+  "descriptive_bands": {
+    "poor": "<50",
+    "fair": "50-<70",
+    "good": "70-<85",
+    "excellent": ">=85",
+    "status": "descriptive/nonclinical"
+  },
+  "knot_evidence_counts": {
+    "counting_rule": "22 nontrivial x-thresholds; domain guard endpoints excluded",
+    "DIRECTLY_CITED": 7,
+    "LITERATURE_INFORMED_PROJECT_ASSUMPTION": 4,
+    "PROJECT_ASSUMPTION": 11
+  },
+  "weights_fixed_before_validation": true,
+  "primary_validation": {
+    "population": "80 development subjects; 157 candidate recordings; sealed overlap zero",
+    "paired_n": 156,
+    "refusal": "SC4092E0-PSG unknown_fraction",
+    "mae": 5.353162616339118,
+    "bias": 1.743236317278342,
+    "spearman": 0.8814306712395884,
+    "pearson": 0.9421074200676529,
+    "ba_lower": -12.602954612481104,
+    "ba_upper": 16.08942724703779,
+    "max_abs_error": 22.233644859813083
+  },
+  "limitations": [
+    "No direct sleep-quality ground-truth label",
+    "Project-defined weights",
+    "Project-defined knots",
+    "Nonclinical qualitative bands",
+    "File-span TIB proxy",
+    "Lights-off assumption for SOL",
+    "Hard-stage uncertainty ignored",
+    "No SQI confidence interval",
+    "Correlated components",
+    "Homogeneous-stage synthetic pathology",
+    "No age/context personalization in headline",
+    "Classifier boundary error propagation",
+    "No subjective quality input",
+    "No respiration or SpO2 component",
+    "Not clinically validated"
+  ],
+  "sources": [
+    "integration/sleep-dashboard-handoff/sqi.py",
+    "integration/sleep-dashboard-handoff/SQI_REPORT.md",
+    "artifacts/RC1_SQI_PROPAGATION/metrics.json",
+    "SQI_CONTENT_VALIDATION_PATCH_REPORT.md"
+  ],
+  "artifact_hashes": {
+    "integration/sleep-dashboard-handoff/sqi.py": "cf024946bb5ba4ff159ee2fe85bdeeff3dc463abdd74567f6b6da44efb546918",
+    "integration/sleep-dashboard-handoff/SQI_REPORT.md": "777ca1bbc5ebbc757206a8c6c9784766fcb186bd8fc95f1c17935236abc75cf1",
+    "artifacts/RC1_SQI_PROPAGATION/metrics.json": "4be3825e2a55da4c98b35e2c1a771a36a807b111eb87fe1f51afd612d4d637e2",
+    "SQI_CONTENT_VALIDATION_PATCH_REPORT.md": "b251801f801dc539864df12568d61a507310e3d761e38040e0f05e0749464b5b"
+  }
+}

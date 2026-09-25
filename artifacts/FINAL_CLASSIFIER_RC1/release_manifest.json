@@ -1,0 +1,20 @@
+{
+  "release": "FINAL_CLASSIFIER_RC1",
+  "freeze_sha256_used_by_test": "c6e1f71f310999be5a629c37884544cfb2f643f8fa1e09231544a5baa213a010",
+  "files": {
+    "artifacts\\N06\\model.joblib": "66af8808a9fca42c6046e83a09e02bdcd10d912cc5d013ae02ba52837c7fa262",
+    "predict_final.py": "2ba652f2c7d02e547603b3e4378c8578af96871eb11d1076f2971491739746cd",
+    "advanced_experiments.py": "f27f42e52b8b99591f7380a359a00c2fe76ea98f0d14136ed59d89c4252628c9",
+    "cnn_c01.py": "c900244e9b20bb91f0b66b39c695a93be5c19ce46f9cdf0a2e0803ff6bb5fe44",
+    "cnn_e13_overlap.py": "735c291a5fcdafd3fa4a9ee5816d9316b37899926556e4b934268a046493230c",
+    "artifacts\\FINAL_CLASSIFIER_RC1\\freeze.json": "c6e1f71f310999be5a629c37884544cfb2f643f8fa1e09231544a5baa213a010",
+    "artifacts\\FINAL_CLASSIFIER_RC1\\sealed_test_result.json": "9958bf5549bb7684146de051c79faa29c66980b87ac2a3542dc178f34b23cc30",
+    "artifacts\\CNN_C01\\fold_1\\best.pt": "da828fefa7bb452ac5c2a31c49bdadf8ea6f209a6c9f3a84253f589afc56a28b",
+    "artifacts\\CNN_C01\\fold_2\\best.pt": "e894001d17d2015b5a048bd04421b0fd07e17394be98db43170a747eeb87618c",
+    "artifacts\\CNN_C01\\fold_3\\best.pt": "932aac9d7ee8bdb70d1652b12e84fddc240d337fc426593c9b5bc9c68d238a74",
+    "artifacts\\CNN_C01\\fold_4\\best.pt": "d7a1ffcb3c29eacb752425077ba628ae415a46a0b5d3e3ee411d5cce55843024",
+    "artifacts\\CNN_C01\\fold_5\\best.pt": "43cc48f8720fce07b572ad395e7f7e6d966904c6daf93e32f1d69181a41ab601"
+  },
+  "smoke_rows": 1196,
+  "smoke_probability_sums_valid": true
+}
